@@ -16,3 +16,12 @@
 .page_masked {
     composes: page;
 }
+
+.sample {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.sample p {
+    padding: 10px 0;
+}

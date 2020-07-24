@@ -35,6 +35,8 @@
   "dependencies": {
     "@apollo/react-hooks": "~3.1.2",
     "@babel/template": "~7.8.6",
+    "i18next": "^19.6.2",
+    "i18next-icu": "^1.4.2",
     "informed": "~2.11.17",
     "jarallax": "~1.11.1",
     "load-google-maps-api": "~2.0.1",
@@ -45,6 +47,7 @@
     "prop-types": "~15.7.2",
     "react-feather": "~2.0.3",
     "react-helmet-async": "^1.0.2",
+    "react-i18next": "^11.7.0",
     "react-slick": "~0.25.2",
     "redux-actions": "~2.6.4",
     "redux-thunk": "~2.3.0",
