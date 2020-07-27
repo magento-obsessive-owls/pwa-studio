@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import { ApolloLink } from 'apollo-link';
 import { setContext } from 'apollo-link-context';
 import { onError } from 'apollo-link-error';
+import { IntlProvider } from 'react-intl';
+import messages_el from './translations/el.json';
+import messages_en from './translations/en.json';
 
 import { RetryLink } from 'apollo-link-retry';
 import MutationQueueLink from '@adobe/apollo-link-mutation-queue';
@@ -14,6 +17,14 @@ import app from '@magento/peregrine/lib/store/actions/app';
 import App, { AppContextProvider } from '@magento/venia-ui/lib/components/App';
 
 import { registerSW } from './registerSW';
+
+const messages = {
+    el: messages_el,
+    en: messages_en
+};
+
+// const language = navigator.language.split(/[-_]/)[0]; // language without region code
+const language = 'el';
 
 const { BrowserPersistence } = Util;
 const apiBase = new URL('/graphql', location.origin).toString();
@@ -72,7 +83,9 @@ const apolloLink = ApolloLink.from([
 ReactDOM.render(
     <Adapter apiBase={apiBase} apollo={{ link: apolloLink }} store={store}>
         <AppContextProvider>
-            <App />
+            <IntlProvider locale={language} messages={messages[language]}>
+                <App />
+            </IntlProvider>
         </AppContextProvider>
     </Adapter>,
     document.getElementById('root')

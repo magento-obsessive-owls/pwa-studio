@@ -103,5 +103,8 @@
       "path": "./packages/venia-concept/dist/+([0-9]).*.js",
       "maxSize": "100 kB"
     }
-  ]
+  ],
+  "dependencies": {
+    "react-intl": "^5.4.1"
+  }
 }
