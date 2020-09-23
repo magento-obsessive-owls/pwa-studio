@@ -15,8 +15,6 @@
 
 .switchers {
     display: none;
-    background-color: rgb(var(--venia-global-color-gray-100));
-    width: 100%;
 }
 
 .open {
@@ -43,8 +41,25 @@
 
 @media (min-width: 641px) {
     .switchers {
-        display: block;
+        display: grid;
+        grid-auto-flow: column;
+        grid-auto-columns: max-content;
+        justify-content: flex-end;
+        max-width: var(--venia-global-maxWidth);
+        width: 100%;
+        position: relative;
     }
+
+    .switchers:before {
+        width: 100vw;
+        content: '';
+        position: absolute;
+        height: 100%;
+        left: 50%;
+        transform: translate3d(-50vw, 0, 0);
+        background-color: rgb(var(--venia-global-color-gray-100));
+    }
+
     .toolbar {
         grid-template-areas: 'primary title secondary';
         grid-template-columns: auto auto 1fr;

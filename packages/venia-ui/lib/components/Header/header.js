@@ -15,6 +15,7 @@ import { mergeClasses } from '../../classify';
 import defaultClasses from './header.css';
 import PageLoadingIndicator from '../PageLoadingIndicator';
 import StoreSwitcher from './storeSwitcher';
+import CurrencySwitcher from './currencySwitcher';
 
 const SearchBar = React.lazy(() => import('../SearchBar'));
 
@@ -61,6 +62,7 @@ const Header = props => {
         <header className={rootClass}>
             <div ref={ref} className={classes.switchers}>
                 <StoreSwitcher />
+                <CurrencySwitcher />
             </div>
             <div className={classes.toolbar}>
                 <div className={classes.primaryActions}>
