@@ -9,8 +9,7 @@
     top: 0;
     width: 100%;
     z-index: 10;
-    --switchers-height: 0;
-    --header-height: calc(var(--switchers-height) * 1px + 5rem);
+    --header-height: 5rem;
 }
 
 .switchers {
@@ -26,6 +25,8 @@
 }
 
 .toolbar {
+    position: relative;
+    z-index: 3;
     align-content: center;
     align-items: center;
     display: grid;
@@ -48,6 +49,8 @@
         max-width: var(--venia-global-maxWidth);
         width: 100%;
         position: relative;
+        z-index: 11;
+        margin: 0 auto;
     }
 
     .switchers:before {
@@ -58,6 +61,7 @@
         left: 50%;
         transform: translate3d(-50vw, 0, 0);
         background-color: rgb(var(--venia-global-color-gray-100));
+        margin: 0 auto;
     }
 
     .toolbar {

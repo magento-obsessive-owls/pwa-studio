@@ -1,4 +1,4 @@
-import React, { Suspense, useLayoutEffect, useRef } from 'react';
+import React, { Suspense } from 'react';
 import { shape, string } from 'prop-types';
 
 import Logo from '../Logo';
@@ -27,7 +27,6 @@ const Header = props => {
         searchOpen,
         isPageLoading
     } = useHeader();
-    const ref = useRef();
 
     const classes = mergeClasses(defaultClasses, props.classes);
     const rootClass = searchOpen ? classes.open : classes.closed;
@@ -49,44 +48,37 @@ const Header = props => {
         <PageLoadingIndicator />
     ) : null;
 
-    useLayoutEffect(() => {
-        const { current } = ref;
-
-        current.parentElement.style.setProperty(
-            '--switchers-height',
-            current.offsetHeight
-        );
-    });
-
     return (
-        <header className={rootClass}>
-            <div ref={ref} className={classes.switchers}>
+        <React.Fragment>
+            <div className={classes.switchers}>
                 <StoreSwitcher />
                 <CurrencySwitcher />
             </div>
-            <div className={classes.toolbar}>
-                <div className={classes.primaryActions}>
-                    <NavTrigger />
-                </div>
-                {pageLoadingIndicator}
-                <OnlineIndicator
-                    hasBeenOffline={hasBeenOffline}
-                    isOnline={isOnline}
-                />
-                <Link to={resourceUrl('/')}>
-                    <Logo classes={{ logo: classes.logo }} />
-                </Link>
-                <div className={classes.secondaryActions}>
-                    <SearchTrigger
-                        active={searchOpen}
-                        onClick={handleSearchTriggerClick}
+            <header className={rootClass}>
+                <div className={classes.toolbar}>
+                    <div className={classes.primaryActions}>
+                        <NavTrigger />
+                    </div>
+                    {pageLoadingIndicator}
+                    <OnlineIndicator
+                        hasBeenOffline={hasBeenOffline}
+                        isOnline={isOnline}
                     />
-                    <AccountTrigger />
-                    <CartTrigger />
+                    <Link to={resourceUrl('/')}>
+                        <Logo classes={{ logo: classes.logo }} />
+                    </Link>
+                    <div className={classes.secondaryActions}>
+                        <SearchTrigger
+                            active={searchOpen}
+                            onClick={handleSearchTriggerClick}
+                        />
+                        <AccountTrigger />
+                        <CartTrigger />
+                    </div>
                 </div>
-            </div>
-            {searchBar}
-        </header>
+                {searchBar}
+            </header>
+        </React.Fragment>
     );
 };
 

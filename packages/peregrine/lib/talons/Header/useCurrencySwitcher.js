@@ -56,9 +56,9 @@ export const useCurrencySwitcher = props => {
         }
     );
 
-    const availableCurrencies = currencyData
-        ? mapAvailableOptions(currencyData.currency)
-        : {};
+    const availableCurrencies = useMemo(() => {
+        return currencyData && mapAvailableOptions(currencyData.currency);
+    }, [currencyData]);
 
     const history = useHistory();
 
