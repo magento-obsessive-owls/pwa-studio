@@ -14,10 +14,13 @@ export const CUSTOM_TYPES = {
              * props or the entire query will return null.
              */
             current_currency_code: {
-                read(_, {readField}) {
-                    return storage.getItem('store_view_currency') || readField('default_display_currency_code')
+                read(_, { readField }) {
+                    return (
+                        storage.getItem('store_view_currency') ||
+                        readField('default_display_currency_code')
+                    );
                 }
-            },
+            }
         }
     }
 };

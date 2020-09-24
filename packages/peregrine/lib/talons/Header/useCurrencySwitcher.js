@@ -1,5 +1,5 @@
 import { useQuery } from '@apollo/client';
-import {useCallback, useMemo} from 'react';
+import { useCallback, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDropdown } from '@magento/peregrine/lib/hooks/useDropdown';
 import { useTypePolicies } from '@magento/peregrine';
@@ -9,17 +9,13 @@ const storage = new BrowserPersistence();
 
 const mapAvailableOptions = rawData => {
     if (rawData) {
-        const {
-            available_currency_codes,
-            current_currency_code
-        } = rawData;
+        const { available_currency_codes, current_currency_code } = rawData;
 
         const availableOptions = {};
 
         available_currency_codes.forEach(currencyCode => {
             availableOptions[currencyCode] = {
-                is_current:
-                    currencyCode === current_currency_code
+                is_current: currencyCode === current_currency_code
             };
         });
 
