@@ -16,7 +16,7 @@ const CurrencySwitcher = props => {
     });
 
     const {
-        handleSwitchStore,
+        handleSwitchCurrency,
         availableCurrencies,
         currencyMenuRef,
         currencyMenuTriggerRef,
@@ -61,7 +61,7 @@ const CurrencySwitcher = props => {
             <li key={currencyCode} className={classes.menuItem}>
                 <SwitcherItem
                     active={isActive}
-                    onClick={handleSwitchStore}
+                    onClick={handleSwitchCurrency}
                     switcherItem={switcherItem}
                 />
             </li>

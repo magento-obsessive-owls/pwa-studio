@@ -35,7 +35,7 @@ const mapAvailableOptions = rawData => {
  * @returns {Ref}       talonProps.storeMenuRef - A React ref to the menu that this trigger toggles.
  * @returns {Ref}       talonProps.storeMenuTriggerRef - A React ref to the trigger element itself.
  * @returns {Function}  talonProps.handleTriggerClick - A function for handling when the trigger is clicked.
- * @returns {Function}  talonProps.handleSwitchStore - A function for handling when the menu item is clicked.
+ * @returns {Function}  talonProps.handleSwitchCurrency - A function for handling when the menu item is clicked.
  */
 
 export const useCurrencySwitcher = props => {
@@ -58,7 +58,7 @@ export const useCurrencySwitcher = props => {
 
     const history = useHistory();
 
-    const handleSwitchStore = useCallback(
+    const handleSwitchCurrency = useCallback(
         currencyCode => {
             // Do nothing when currency code is not present in available currencies
             if (!availableCurrencies[currencyCode]) return;
@@ -90,6 +90,6 @@ export const useCurrencySwitcher = props => {
         currencyMenuTriggerRef,
         currencyMenuIsOpen,
         handleTriggerClick,
-        handleSwitchStore
+        handleSwitchCurrency
     };
 };
