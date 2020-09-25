@@ -15,8 +15,8 @@ import { useIntl } from 'react-intl';
  */
 
 const CurrencySymbol = props => {
-    const { locale, currencyDisplay } = useIntl();
-    const { currencyCode, classes } = props;
+    const { locale } = useIntl();
+    const { currencyCode, classes, currencyDisplay } = props;
 
     // If the optional locale prop is not provided or is undefined,
     // the runtime's default locale is used in the Intl.NumberFormat() constructor.
