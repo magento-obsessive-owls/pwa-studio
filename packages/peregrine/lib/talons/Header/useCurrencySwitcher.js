@@ -44,13 +44,10 @@ export const useCurrencySwitcher = props => {
 
     useTypePolicies(typePolicies);
 
-    const { data: currencyData, loading: currencyDataLoading } = useQuery(
-        getCurrencyData,
-        {
-            fetchPolicy: 'cache-and-network',
-            nextFetchPolicy: 'cache-first'
-        }
-    );
+    const { data: currencyData } = useQuery(getCurrencyData, {
+        fetchPolicy: 'cache-and-network',
+        nextFetchPolicy: 'cache-first'
+    });
 
     const availableCurrencies = useMemo(() => {
         return currencyData && mapAvailableOptions(currencyData.currency);
@@ -85,7 +82,6 @@ export const useCurrencySwitcher = props => {
 
     return {
         availableCurrencies,
-        isLoading: currencyDataLoading,
         currencyMenuRef,
         currencyMenuTriggerRef,
         currencyMenuIsOpen,

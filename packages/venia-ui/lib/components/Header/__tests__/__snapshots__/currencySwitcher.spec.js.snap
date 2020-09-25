@@ -14,6 +14,7 @@ exports[`does not render CurrencySwitcher when there is only one available store
             }
           }
           currencyCode="EUR"
+          currencyDisplay="narrowSymbol"
         />
         EUR
       </span>
@@ -25,16 +26,7 @@ exports[`does not render CurrencySwitcher when there is only one available store
       className="label"
     >
       <span>
-        <i
-          classes={
-            Object {
-              "currency": "symbol",
-            }
-          }
-          currencyCode="EUR"
-        >
-          'CurrencySymbol'
-        </i>
+        CurrencySymbol
         EUR
       </span>
     </span>
@@ -58,16 +50,7 @@ exports[`does not render CurrencySwitcher when there is only one available store
               className="text"
             >
               <span>
-                <i
-                  classes={
-                    Object {
-                      "currency": "symbol",
-                    }
-                  }
-                  currencyCode="USD"
-                >
-                  'CurrencySymbol'
-                </i>
+                CurrencySymbol
                 USD
               </span>
             </span>
@@ -89,16 +72,7 @@ exports[`does not render CurrencySwitcher when there is only one available store
               className="text"
             >
               <span>
-                <i
-                  classes={
-                    Object {
-                      "currency": "symbol",
-                    }
-                  }
-                  currencyCode="EUR"
-                >
-                  'CurrencySymbol'
-                </i>
+                CurrencySymbol
                 EUR
               </span>
             </span>
@@ -144,6 +118,7 @@ exports[`renders the correct tree 1`] = `
             }
           }
           currencyCode="EUR"
+          currencyDisplay="narrowSymbol"
         />
         EUR
       </span>
@@ -155,16 +130,7 @@ exports[`renders the correct tree 1`] = `
       className="label"
     >
       <span>
-        <i
-          classes={
-            Object {
-              "currency": "symbol",
-            }
-          }
-          currencyCode="EUR"
-        >
-          'CurrencySymbol'
-        </i>
+        CurrencySymbol
         EUR
       </span>
     </span>
@@ -188,16 +154,7 @@ exports[`renders the correct tree 1`] = `
               className="text"
             >
               <span>
-                <i
-                  classes={
-                    Object {
-                      "currency": "symbol",
-                    }
-                  }
-                  currencyCode="USD"
-                >
-                  'CurrencySymbol'
-                </i>
+                CurrencySymbol
                 USD
               </span>
             </span>
@@ -219,16 +176,7 @@ exports[`renders the correct tree 1`] = `
               className="text"
             >
               <span>
-                <i
-                  classes={
-                    Object {
-                      "currency": "symbol",
-                    }
-                  }
-                  currencyCode="EUR"
-                >
-                  'CurrencySymbol'
-                </i>
+                CurrencySymbol
                 EUR
               </span>
             </span>

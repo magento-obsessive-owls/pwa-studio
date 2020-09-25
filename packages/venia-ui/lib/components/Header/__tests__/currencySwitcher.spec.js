@@ -8,7 +8,7 @@ jest.mock('@magento/peregrine/lib/talons/Header/useCurrencySwitcher', () => ({
 }));
 
 jest.mock('@magento/peregrine/lib/Price', () => ({
-    CurrencySymbol: jest.fn(props => <i {...props}>'CurrencySymbol'</i>)
+    CurrencySymbol: jest.fn(() => 'CurrencySymbol')
 }));
 
 jest.mock('@magento/peregrine/lib/talons/Header/useCurrencySwitcher', () => {});

@@ -43,6 +43,7 @@ const CurrencySwitcher = props => {
                 <CurrencySymbol
                     classes={currencySymbol}
                     currencyCode={currencyCode}
+                    currencyDisplay={'narrowSymbol'}
                 />
                 {currencyCode}
             </span>

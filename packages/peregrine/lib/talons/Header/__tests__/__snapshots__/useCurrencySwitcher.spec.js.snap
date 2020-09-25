@@ -18,6 +18,5 @@ Object {
   "currencyMenuTriggerRef": [MockFunction],
   "handleSwitchCurrency": [Function],
   "handleTriggerClick": [Function],
-  "isLoading": false,
 }
 `;

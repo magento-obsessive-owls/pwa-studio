@@ -15,7 +15,7 @@ import { useIntl } from 'react-intl';
  */
 
 const CurrencySymbol = props => {
-    const { locale } = useIntl();
+    const { locale, currencyDisplay } = useIntl();
     const { currencyCode, classes } = props;
 
     // If the optional locale prop is not provided or is undefined,
@@ -23,7 +23,7 @@ const CurrencySymbol = props => {
     const parts = patches.toParts.call(
         new Intl.NumberFormat(locale, {
             style: 'currency',
-            currencyDisplay: 'narrowSymbol',
+            currencyDisplay: currencyDisplay,
             currency: currencyCode
         }),
         0
@@ -44,11 +44,16 @@ CurrencySymbol.propTypes = {
     /**
      * A string with any of the currency code supported by Intl.NumberFormat
      */
-    currencyCode: string.isRequired
+    currencyCode: string.isRequired,
+    /**
+     * Currency display types supported by Intl.NumberFormat
+     */
+    currencyDisplay: string
 };
 
 CurrencySymbol.defaultProps = {
-    classes: {}
+    classes: {},
+    currencyDisplay: 'symbol'
 };
 
 export default CurrencySymbol;
