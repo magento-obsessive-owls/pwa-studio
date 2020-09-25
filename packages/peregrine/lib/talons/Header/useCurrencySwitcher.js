@@ -28,9 +28,10 @@ const mapAvailableOptions = rawData => {
 /**
  * The useCurrencySwitcher talon complements the CurrencySwitcher component.
  *
- * @param {*} props.getStoreConfig the store switcher data getStoreConfig
+ * @param {*} props.queries the currency switcher data getCurrencyData
+ * @param {*} props.typePolicies customization of the apollo cache's behavior for 'current_currency_code' field
  *
- * @returns {Object}    talonProps.availableStores - Details about the available store views.
+ * @returns {Object}    talonProps.availableCurrencies - Details about the available currencies.
  * @returns {Boolean}   talonProps.storeMenuIsOpen - Whether the menu that this trigger toggles is open or not.
  * @returns {Ref}       talonProps.storeMenuRef - A React ref to the menu that this trigger toggles.
  * @returns {Ref}       talonProps.storeMenuTriggerRef - A React ref to the trigger element itself.
