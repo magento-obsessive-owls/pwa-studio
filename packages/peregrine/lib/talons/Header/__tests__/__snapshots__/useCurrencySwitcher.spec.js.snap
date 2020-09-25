@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should return correct shape 1`] = `
+Object {
+  "availableCurrencies": Object {
+    "EUR": Object {
+      "is_current": false,
+    },
+    "GBP": Object {
+      "is_current": true,
+    },
+    "USD": Object {
+      "is_current": false,
+    },
+  },
+  "currencyMenuIsOpen": false,
+  "currencyMenuRef": "elementRef",
+  "currencyMenuTriggerRef": [MockFunction],
+  "handleSwitchCurrency": [Function],
+  "handleTriggerClick": [Function],
+  "isLoading": false,
+}
+`;
