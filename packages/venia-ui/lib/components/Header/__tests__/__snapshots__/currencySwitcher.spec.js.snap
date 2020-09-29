@@ -5,30 +5,23 @@ exports[`does not render CurrencySwitcher when there is only one available store
   className="root"
 >
   <button
-    aria-label={
-      <span>
-        <mockConstructor
-          classes={
-            Object {
-              "currency": "symbol",
-            }
-          }
-          currencyCode="EUR"
-          currencyDisplay="narrowSymbol"
-        />
-        EUR
-      </span>
-    }
+    aria-label="EUR"
     className="trigger"
     onClick={[MockFunction]}
   >
     <span
       className="label"
     >
-      <span>
-        CurrencySymbol
-        EUR
-      </span>
+      <i
+        classes={
+          Object {
+            "currency": "symbol",
+          }
+        }
+        currencyCode="EUR"
+        currencyDisplay="narrowSymbol"
+      />
+      EUR
     </span>
   </button>
   <div
@@ -49,10 +42,16 @@ exports[`does not render CurrencySwitcher when there is only one available store
             <span
               className="text"
             >
-              <span>
-                CurrencySymbol
-                USD
-              </span>
+              <i
+                classes={
+                  Object {
+                    "currency": "symbol",
+                  }
+                }
+                currencyCode="USD"
+                currencyDisplay="narrowSymbol"
+              />
+              USD
             </span>
           </span>
         </button>
@@ -71,10 +70,16 @@ exports[`does not render CurrencySwitcher when there is only one available store
             <span
               className="text"
             >
-              <span>
-                CurrencySymbol
-                EUR
-              </span>
+              <i
+                classes={
+                  Object {
+                    "currency": "symbol",
+                  }
+                }
+                currencyCode="EUR"
+                currencyDisplay="narrowSymbol"
+              />
+              EUR
             </span>
             <span
               className="root"
@@ -109,30 +114,23 @@ exports[`renders the correct tree 1`] = `
   className="root"
 >
   <button
-    aria-label={
-      <span>
-        <mockConstructor
-          classes={
-            Object {
-              "currency": "symbol",
-            }
-          }
-          currencyCode="EUR"
-          currencyDisplay="narrowSymbol"
-        />
-        EUR
-      </span>
-    }
+    aria-label="EUR"
     className="trigger"
     onClick={[MockFunction]}
   >
     <span
       className="label"
     >
-      <span>
-        CurrencySymbol
-        EUR
-      </span>
+      <i
+        classes={
+          Object {
+            "currency": "symbol",
+          }
+        }
+        currencyCode="EUR"
+        currencyDisplay="narrowSymbol"
+      />
+      EUR
     </span>
   </button>
   <div
@@ -153,10 +151,16 @@ exports[`renders the correct tree 1`] = `
             <span
               className="text"
             >
-              <span>
-                CurrencySymbol
-                USD
-              </span>
+              <i
+                classes={
+                  Object {
+                    "currency": "symbol",
+                  }
+                }
+                currencyCode="USD"
+                currencyDisplay="narrowSymbol"
+              />
+              USD
             </span>
           </span>
         </button>
@@ -175,10 +179,16 @@ exports[`renders the correct tree 1`] = `
             <span
               className="text"
             >
-              <span>
-                CurrencySymbol
-                EUR
-              </span>
+              <i
+                classes={
+                  Object {
+                    "currency": "symbol",
+                  }
+                }
+                currencyCode="EUR"
+                currencyDisplay="narrowSymbol"
+              />
+              EUR
             </span>
             <span
               className="root"

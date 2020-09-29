@@ -36,11 +36,6 @@ const StoreSwitcher = props => {
         const isActive = availableStores[storeCode].is_current;
         const storeName = availableStores[storeCode].storeName;
 
-        const switcherItem = {
-            label: storeName,
-            code: storeCode
-        };
-
         if (isActive) {
             currentStoreName = storeName;
         }
@@ -50,8 +45,10 @@ const StoreSwitcher = props => {
                 <SwitcherItem
                     active={isActive}
                     onClick={handleSwitchStore}
-                    switcherItem={switcherItem}
-                />
+                    option={storeCode}
+                >
+                    {storeName}
+                </SwitcherItem>
             </li>
         );
     });

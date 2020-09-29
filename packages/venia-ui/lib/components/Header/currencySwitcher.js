@@ -17,6 +17,7 @@ const CurrencySwitcher = props => {
 
     const {
         handleSwitchCurrency,
+        currentCurrencyCode,
         availableCurrencies,
         currencyMenuRef,
         currencyMenuTriggerRef,
@@ -31,40 +32,23 @@ const CurrencySwitcher = props => {
         currency: classes.symbol
     };
 
-    if (!availableCurrencies || Object.keys(availableCurrencies).length === 1)
-        return null;
+    if (!availableCurrencies || availableCurrencies.length === 1) return null;
 
-    let currentCurrency = null;
-
-    const currencies = Object.keys(availableCurrencies).map(currencyCode => {
-        const isActive = availableCurrencies[currencyCode].is_current;
-        const label = (
-            <span>
-                <CurrencySymbol
-                    classes={currencySymbol}
-                    currencyCode={currencyCode}
-                    currencyDisplay={'narrowSymbol'}
-                />
-                {currencyCode}
-            </span>
-        );
-
-        const switcherItem = {
-            label: label,
-            code: currencyCode
-        };
-
-        if (isActive) {
-            currentCurrency = label;
-        }
-
+    const currencies = availableCurrencies.map(code => {
         return (
-            <li key={currencyCode} className={classes.menuItem}>
+            <li key={code} className={classes.menuItem}>
                 <SwitcherItem
-                    active={isActive}
+                    active={code === currentCurrencyCode}
                     onClick={handleSwitchCurrency}
-                    switcherItem={switcherItem}
-                />
+                    option={code}
+                >
+                    <CurrencySymbol
+                        classes={currencySymbol}
+                        currencyCode={code}
+                        currencyDisplay={'narrowSymbol'}
+                    />
+                    {code}
+                </SwitcherItem>
             </li>
         );
     });
@@ -73,11 +57,18 @@ const CurrencySwitcher = props => {
         <div className={classes.root}>
             <button
                 className={classes.trigger}
-                aria-label={currentCurrency}
+                aria-label={currentCurrencyCode}
                 onClick={handleTriggerClick}
                 ref={currencyMenuTriggerRef}
             >
-                <span className={classes.label}>{currentCurrency}</span>
+                <span className={classes.label}>
+                    <CurrencySymbol
+                        classes={currencySymbol}
+                        currencyCode={currentCurrencyCode}
+                        currencyDisplay={'narrowSymbol'}
+                    />
+                    {currentCurrencyCode}
+                </span>
             </button>
             <div ref={currencyMenuRef} className={menuClassName}>
                 <ul>{currencies}</ul>

@@ -8,7 +8,7 @@ jest.mock('@magento/peregrine/lib/talons/Header/useCurrencySwitcher', () => ({
 }));
 
 jest.mock('@magento/peregrine/lib/Price', () => ({
-    CurrencySymbol: jest.fn(() => 'CurrencySymbol')
+    CurrencySymbol: jest.fn(props => <i {...props} />)
 }));
 
 jest.mock('@magento/peregrine/lib/talons/Header/useCurrencySwitcher', () => {});
@@ -16,14 +16,8 @@ jest.mock('@magento/venia-ui/lib/classify');
 
 const talonProps = {
     handleSwitchCurrency: jest.fn(),
-    availableCurrencies: {
-        USD: {
-            is_current: false
-        },
-        EUR: {
-            is_current: true
-        }
-    },
+    availableCurrencies: ['USD', 'EUR'],
+    currentCurrencyCode: 'EUR',
     currencyMenuRef: {},
     currencyMenuTriggerRef: {},
     currencyMenuIsOpen: false,

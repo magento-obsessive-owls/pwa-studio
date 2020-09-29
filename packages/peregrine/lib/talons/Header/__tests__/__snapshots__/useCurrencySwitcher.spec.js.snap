@@ -2,20 +2,15 @@
 
 exports[`should return correct shape 1`] = `
 Object {
-  "availableCurrencies": Object {
-    "EUR": Object {
-      "is_current": false,
-    },
-    "GBP": Object {
-      "is_current": true,
-    },
-    "USD": Object {
-      "is_current": false,
-    },
-  },
+  "availableCurrencies": Array [
+    "USD",
+    "EUR",
+    "GBP",
+  ],
   "currencyMenuIsOpen": false,
   "currencyMenuRef": "elementRef",
   "currencyMenuTriggerRef": [MockFunction],
+  "currentCurrencyCode": "GBP",
   "handleSwitchCurrency": [Function],
   "handleTriggerClick": [Function],
 }

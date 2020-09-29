@@ -7,31 +7,14 @@ import { BrowserPersistence } from '@magento/peregrine/lib/util';
 
 const storage = new BrowserPersistence();
 
-const mapAvailableOptions = rawData => {
-    if (rawData) {
-        const { available_currency_codes, current_currency_code } = rawData;
-
-        const availableOptions = {};
-
-        available_currency_codes.forEach(currencyCode => {
-            availableOptions[currencyCode] = {
-                is_current: currencyCode === current_currency_code
-            };
-        });
-
-        return availableOptions;
-    } else {
-        return {};
-    }
-};
-
 /**
  * The useCurrencySwitcher talon complements the CurrencySwitcher component.
  *
  * @param {*} props.queries the currency switcher data getCurrencyData
  * @param {*} props.typePolicies customization of the apollo cache's behavior for 'current_currency_code' field
  *
- * @returns {Object}    talonProps.availableCurrencies - Details about the available currencies.
+ * @returns {Array}     talonProps.availableCurrencies - List of available currency codes.
+ * @returns {String}    talonProps.currentCurrencyCode - Currently used display currency code.
  * @returns {Boolean}   talonProps.storeMenuIsOpen - Whether the menu that this trigger toggles is open or not.
  * @returns {Ref}       talonProps.storeMenuRef - A React ref to the menu that this trigger toggles.
  * @returns {Ref}       talonProps.storeMenuTriggerRef - A React ref to the trigger element itself.
@@ -50,8 +33,16 @@ export const useCurrencySwitcher = props => {
         nextFetchPolicy: 'cache-first'
     });
 
+    const currentCurrencyCode = useMemo(() => {
+        if (currencyData) {
+            return currencyData.currency.current_currency_code;
+        }
+    }, [currencyData]);
+
     const availableCurrencies = useMemo(() => {
-        return currencyData && mapAvailableOptions(currencyData.currency);
+        if (currencyData) {
+            return currencyData.currency.available_currency_codes;
+        }
     }, [currencyData]);
 
     const history = useHistory();
@@ -59,7 +50,7 @@ export const useCurrencySwitcher = props => {
     const handleSwitchCurrency = useCallback(
         currencyCode => {
             // Do nothing when currency code is not present in available currencies
-            if (!availableCurrencies[currencyCode]) return;
+            if (!availableCurrencies.includes(currencyCode)) return;
 
             storage.setItem('store_view_currency', currencyCode);
 
@@ -82,6 +73,7 @@ export const useCurrencySwitcher = props => {
     }, [setCurrencyMenuIsOpen]);
 
     return {
+        currentCurrencyCode,
         availableCurrencies,
         currencyMenuRef,
         currencyMenuTriggerRef,
