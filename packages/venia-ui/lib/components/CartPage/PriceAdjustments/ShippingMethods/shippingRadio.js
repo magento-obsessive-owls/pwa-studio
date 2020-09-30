@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { number, string, shape } from 'prop-types';
-import { Price } from '@magento/peregrine';
+import Price from '@magento/venia-ui/lib/components/Price';
 
 import { mergeClasses } from '../../../../classify';
 import defaultClasses from './shippingRadio.css';

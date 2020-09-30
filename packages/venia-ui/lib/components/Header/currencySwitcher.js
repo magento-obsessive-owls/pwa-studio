@@ -7,7 +7,7 @@ import { mergeClasses } from '../../classify';
 import defaultClasses from './currencySwitcher.css';
 import SwitcherItem from './switcherItem';
 import currencyOperations, { CUSTOM_TYPES } from './currencySwitcher.gql';
-import { CurrencySymbol } from '@magento/peregrine/lib/Price';
+import CurrencySymbol from '@magento/venia-ui/lib/components/CurrencySymbol';
 
 const CurrencySwitcher = props => {
     const talonProps = useCurrencySwitcher({
