@@ -1,4 +1,4 @@
-import React, { Suspense, useRef } from 'react';
+import React, { Suspense } from 'react';
 import { shape, string } from 'prop-types';
 
 import Logo from '../Logo';
@@ -29,7 +29,6 @@ const Header = props => {
         searchRef,
         searchTriggerRef
     } = useHeader();
-    const ref = useRef();
 
     const classes = mergeClasses(defaultClasses, props.classes);
     const rootClass = isSearchOpen ? classes.open : classes.closed;
