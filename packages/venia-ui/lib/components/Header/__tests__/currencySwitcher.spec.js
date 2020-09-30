@@ -7,10 +7,6 @@ jest.mock('@magento/peregrine/lib/talons/Header/useCurrencySwitcher', () => ({
     useCurrencySwitcher: jest.fn()
 }));
 
-jest.mock('@magento/peregrine/lib/Price', () => ({
-    CurrencySymbol: jest.fn(props => <i {...props} />)
-}));
-
 jest.mock('@magento/peregrine/lib/talons/Header/useCurrencySwitcher', () => {});
 jest.mock('@magento/venia-ui/lib/classify');
 
