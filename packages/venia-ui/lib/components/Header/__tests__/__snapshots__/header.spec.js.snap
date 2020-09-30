@@ -27,7 +27,6 @@ Array [
         className="secondaryActions"
       >
         <SearchTrigger
-          active={false}
           onClick={[MockFunction]}
         />
         <AccountTrigger />

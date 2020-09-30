@@ -27,8 +27,8 @@ jest.mock('@magento/peregrine/lib/talons/Header/useHeader', () => {
         handleSearchTriggerClick: jest.fn(),
         hasBeenOffline: false,
         isOnline: true,
-        searchOpen: false,
-        isPageLoading: false
+        isPageLoading: false,
+        searchOpen: false
     };
     return {
         useHeader: jest.fn(() => state)
@@ -47,8 +47,8 @@ test('verify PageLoadingIndicator is displayed when page is loading', () => {
             handleSearchTriggerClick: jest.fn(),
             hasBeenOffline: false,
             isOnline: true,
-            searchOpen: false,
-            isPageLoading: true
+            isPageLoading: true,
+            searchOpen: false
         };
     });
 
