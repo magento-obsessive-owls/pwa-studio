@@ -75,7 +75,7 @@
 
 .switchers {
     display: grid;
-    grid-template-columns: auto auto;
+    grid-auto-flow: column;
     justify-content: space-between;
     background-color: rgb(var(--venia-global-color-gray-100));
     width: 100%;
