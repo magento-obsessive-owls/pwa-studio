@@ -15,11 +15,12 @@ const mapAvailableOptions = (config, stores) => {
             default_display_currency_code: currency,
             locale,
             store_name: storeName,
-            base_link_url : baseLinkUrl
+            base_link_url : baseLinkUrl,
+            base_url : baseUrl
         } = store;
 
         const isCurrent = code === configCode;
-        const option = { currency, isCurrent, locale, storeName, baseLinkUrl };
+        const option = { currency, isCurrent, locale, storeName, baseLinkUrl, baseUrl };
 
         return map.set(code, option);
     }, new Map());
@@ -82,8 +83,10 @@ export const useStoreSwitcher = props => {
         storeCode => {
             // Do nothing when store view is not present in available stores
             if (!availableStores.has(storeCode)) return;
-            if (process.env.USE_MAGENTO_BASE_URLS === 'true') {
-                window.location = availableStores.get(storeCode).baseLinkUrl;
+
+            // Go to different domain if store base url is different
+            if (window.location.hostname !== availableStores.get(storeCode).baseUrl) {
+                window.location = availableStores.get(storeCode).baseUrl;
                 return
             }
 
