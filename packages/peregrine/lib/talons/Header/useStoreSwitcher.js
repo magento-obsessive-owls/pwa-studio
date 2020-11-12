@@ -85,7 +85,8 @@ export const useStoreSwitcher = props => {
             if (!availableStores.has(storeCode)) return;
 
             // Go to different domain if store base url is different
-            if (window.location.hostname !== availableStores.get(storeCode).baseUrl) {
+            const storeUrl = new URL(availableStores.get(storeCode).baseUrl);
+            if (window.location.hostname !== storeUrl.hostname) {
                 window.location = availableStores.get(storeCode).baseUrl;
                 return
             }
