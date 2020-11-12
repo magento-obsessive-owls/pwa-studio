@@ -128,7 +128,7 @@ VeniaAdapter.storeLink = setContext((_, { headers }) => {
     const storeCode =
         storage.getItem('store_view_code') ||
         storeCodeFromDomainsConfig[window.location.hostname] ||
-        storeCodeFromConfig[0].base_url ||
+        storeCodeFromConfig[0].code ||
         STORE_VIEW_CODE;
     // return the headers to the context so httpLink can read them
     return {
