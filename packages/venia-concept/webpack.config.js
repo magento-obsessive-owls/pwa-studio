@@ -1,3 +1,5 @@
+const storesFromDomains = require('./domains.json');
+
 const {
     configureWebpack,
     graphQL: {
@@ -64,7 +66,8 @@ module.exports = async env => {
             STORE_VIEW_CODE: process.env.STORE_VIEW_CODE
                 ? JSON.stringify(process.env.STORE_VIEW_CODE)
                 : JSON.stringify(storeConfigData.code),
-            AVAILABLE_STORE_VIEWS: JSON.stringify(availableStores)
+            AVAILABLE_STORE_VIEWS: JSON.stringify(availableStores),
+            STORE_FROM_DOMAINS: JSON.stringify(storesFromDomains)
         }),
         new HTMLWebpackPlugin({
             filename: 'index.html',
