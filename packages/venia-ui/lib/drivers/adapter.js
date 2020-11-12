@@ -121,6 +121,7 @@ VeniaAdapter.storeLink = setContext((_, { headers }) => {
     // Getting store code from availableStores config
     const storeCodeFromConfig = AVAILABLE_STORE_VIEWS.filter((store)=> {
         const storeURL = new URL(store.base_url);
+        // Additional check is needed to make sure that default store view is set in case of same base_url
         return storeURL.hostname === window.location.hostname;
     });
 
