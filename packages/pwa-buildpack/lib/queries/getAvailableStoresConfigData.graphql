@@ -4,5 +4,7 @@ query availableStoresConfigData {
         id
         store_name
         default_display_currency_code
+        base_url
+        base_link_url
     }
 }

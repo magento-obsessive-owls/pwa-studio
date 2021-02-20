@@ -116,8 +116,20 @@ const VeniaAdapter = props => {
 // Create a new store link to include store codes and currency in the request
 VeniaAdapter.storeLink = setContext((_, { headers }) => {
     const storeCurrency = storage.getItem('store_view_currency') || null;
-    const storeCode = storage.getItem('store_view_code') || STORE_VIEW_CODE;
+    // Getting store code from domains.json config
+    const storeCodeFromDomainsConfig = STORE_FROM_DOMAINS;
+    // Getting store code from availableStores config
+    const storeCodeFromConfig = AVAILABLE_STORE_VIEWS.filter((store)=> {
+        const storeURL = new URL(store.base_url);
+        // Additional check is needed to make sure that default store view is set in case of same base_url
+        return storeURL.hostname === window.location.hostname;
+    });
 
+    const storeCode =
+        storage.getItem('store_view_code') ||
+        storeCodeFromDomainsConfig[window.location.hostname] ||
+        storeCodeFromConfig[0].code ||
+        STORE_VIEW_CODE;
     // return the headers to the context so httpLink can read them
     return {
         headers: {

@@ -6,6 +6,8 @@ export const GET_STORE_CONFIG_DATA = gql`
             id
             code
             store_name
+            base_url
+            base_link_url
         }
     }
 `;
@@ -18,6 +20,8 @@ export const GET_AVAILABLE_STORES_DATA = gql`
             id
             locale
             store_name
+            base_url
+            base_link_url
         }
     }
 `;

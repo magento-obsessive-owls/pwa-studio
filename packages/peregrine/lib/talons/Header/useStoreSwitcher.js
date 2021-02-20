@@ -14,11 +14,13 @@ const mapAvailableOptions = (config, stores) => {
             code,
             default_display_currency_code: currency,
             locale,
-            store_name: storeName
+            store_name: storeName,
+            base_link_url : baseLinkUrl,
+            base_url : baseUrl
         } = store;
 
         const isCurrent = code === configCode;
-        const option = { currency, isCurrent, locale, storeName };
+        const option = { currency, isCurrent, locale, storeName, baseLinkUrl, baseUrl };
 
         return map.set(code, option);
     }, new Map());
@@ -81,6 +83,13 @@ export const useStoreSwitcher = props => {
         storeCode => {
             // Do nothing when store view is not present in available stores
             if (!availableStores.has(storeCode)) return;
+
+            // Go to different domain if store base url is different
+            const storeUrl = new URL(availableStores.get(storeCode).baseUrl);
+            if (window.location.hostname !== storeUrl.hostname) {
+                window.location = availableStores.get(storeCode).baseUrl;
+                return
+            }
 
             storage.setItem('store_view_code', storeCode);
             storage.setItem(
