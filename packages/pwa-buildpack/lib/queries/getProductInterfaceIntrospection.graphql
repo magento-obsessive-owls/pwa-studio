@@ -1,0 +1,19 @@
+query {
+    __type(name: "ProductInterface") {
+        fields {
+            name
+            description
+            type {
+                name
+                kind
+                fields {
+                    name
+                    type {
+                        name
+                        kind
+                    }
+                }
+            }
+        }
+    }
+}

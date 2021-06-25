@@ -1,0 +1,23 @@
+query getProductAttributesMetadata($attributes:[AttributeInput!]!) {
+    customAttributeMetadata(
+        attributes: $attributes
+    ) {
+        items {
+            attribute_code
+            attribute_type
+            entity_type
+            input_type
+            attribute_options {
+                label
+                value
+            }
+            storefront_properties {
+                position
+                use_in_product_listing
+                visible_on_catalog_pages
+                use_in_layered_navigation
+                use_in_search_results_layered_navigation
+            }
+        }
+    }
+}

@@ -46,8 +46,15 @@ const GalleryItem = props => {
     if (!item) {
         return <ItemPlaceholder classes={classes} />;
     }
-
+    const customAttributesCodes = PRODUCT_ATTRIBUTES_METADATA.reduce((result, item) => {
+        if (item.storefront_properties.use_in_product_listing === true)
+        {
+            result.push(item.attribute_code)
+        }
+        return result;
+    },[]);
     const { name, price, small_image, url_key, url_suffix } = item;
+    const customAttributesValues = customAttributesCodes.map(code => <div key={code}>{item[code]}</div>);
     const { url: smallImageURL } = small_image;
     const productLink = resourceUrl(`/${url_key}${url_suffix || ''}`);
 
@@ -89,6 +96,7 @@ const GalleryItem = props => {
                 />
             </div>
             <div className={classes.actionsContainer}>{wishlistButton}</div>
+            <div>{customAttributesValues}</div>
         </div>
     );
 };

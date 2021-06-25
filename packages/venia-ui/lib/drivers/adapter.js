@@ -51,6 +51,9 @@ const VeniaAdapter = props => {
     const [initialized, setInitialized] = useState(false);
 
     const apolloClient = useMemo(() => {
+        const temp = PRODUCT_ATTRIBUTES_METADATA;
+        //debugger;
+        console.log(POSSIBLE_TYPES);
         const cache = apollo.cache || preInstantiatedCache;
         const link = apollo.link || VeniaAdapter.apolloLink(apiBase);
         const client = apollo.client || new ApolloClient({ cache, link });

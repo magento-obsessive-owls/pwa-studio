@@ -5,7 +5,7 @@ const https = require('https');
 // To be used with `node-fetch` in order to allow self-signed certificates.
 const httpsAgent = new https.Agent({ rejectUnauthorized: false });
 
-const fetchQuery = query => {
+const fetchQuery = (query, variables) => {
     const targetURL = new URL('graphql', process.env.MAGENTO_BACKEND_URL);
     const headers = {
         'Content-Type': 'application/json',
@@ -18,7 +18,7 @@ const fetchQuery = query => {
 
     return fetch(targetURL.toString(), {
         agent: targetURL.protocol === 'https:' ? httpsAgent : null,
-        body: JSON.stringify({ query }),
+        body: JSON.stringify({ query, variables: variables }),
         headers: headers,
         method: 'POST'
     })
@@ -119,11 +119,37 @@ const getPossibleTypes = async () => {
     return possibleTypes;
 };
 
+
+const getProductInterfaceIntrospection = () => {
+    return fetchQuery(graphQLQueries.getProductInterfaceIntrospection);
+};
+const getProductAttributesMetadata = (variables) => {
+    return fetchQuery(graphQLQueries.getProductAttributesMetadata, variables);
+};
+const getProductAttributes = async () => {
+    const productInterfaceIntrospection = await getProductInterfaceIntrospection();
+    const attributeCodes = {
+        "attributes": productInterfaceIntrospection.__type.fields.reduce((result, item) => {
+            console.log(item.description);
+            if (item.description || item.name === 'staged') {
+
+            } else {
+                result.push({attribute_code: item.name, entity_type: "catalog_product"})
+            }
+            return result;
+        },[])
+    };
+    const metadata = await getProductAttributesMetadata(attributeCodes);
+    console.log(metadata.customAttributeMetadata.items);
+    return metadata.customAttributeMetadata.items;
+};
+
 module.exports = {
     getMediaURL,
     getStoreConfigData,
     getAvailableStoresConfigData,
     getPossibleTypes,
     getSchemaTypes,
+    getProductAttributes,
     getUnionAndInterfaceTypes
 };

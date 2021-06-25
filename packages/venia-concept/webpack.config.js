@@ -4,7 +4,8 @@ const {
         getMediaURL,
         getStoreConfigData,
         getAvailableStoresConfigData,
-        getPossibleTypes
+        getPossibleTypes,
+        getProductAttributes
     }
 } = require('@magento/pwa-buildpack');
 const { DefinePlugin } = require('webpack');
@@ -44,6 +45,7 @@ module.exports = async env => {
     const mediaUrl = await getMediaURL();
     const storeConfigData = await getStoreConfigData();
     const { availableStores } = await getAvailableStoresConfigData();
+    const productAttributes = await getProductAttributes();
 
     /**
      * Loop the available stores when there is provided STORE_VIEW_CODE
@@ -80,6 +82,8 @@ module.exports = async env => {
                 : JSON.stringify(storeConfigData.code),
             AVAILABLE_STORE_VIEWS: JSON.stringify(availableStores),
             DEFAULT_LOCALE: JSON.stringify(global.LOCALE),
+            PRODUCT_ATTRIBUTES: JSON.stringify(productAttributes),
+            PRODUCT_ATTRIBUTES_METADATA: JSON.stringify(productAttributes),
             DEFAULT_COUNTRY_CODE: JSON.stringify(
                 process.env.DEFAULT_COUNTRY_CODE || 'US'
             )
